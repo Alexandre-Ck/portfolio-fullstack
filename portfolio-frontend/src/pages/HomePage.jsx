@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import ContactForm from '../components/ContactForm';
-import ServicesSection from '../components/ServicesSection'; // Importation de ton nouveau composant de services
+import ServicesSection from '../components/ServicesSection'; // Importation de ton composant de services
+import ProcessSection from '../components/ProcessSection';   // Importation de ton nouveau composant de méthodologie
 
 export default function HomePage() {
   return (
+    // Conteneur racine unique et propre pour toute la page
     <div className="max-w-6xl mx-auto px-4 py-12 space-y-20">
       
+      {/* 1. Section Hero - Présentation et proposition de valeur immédiate */}
       <section className="text-center max-w-3xl mx-auto py-8">
         <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
           Développeur Full-Stack & Solutions Web <span className="text-emerald-400">Sur-Mesure</span>
@@ -31,10 +34,17 @@ export default function HomePage() {
 
       <hr className="border-slate-800" />
 
+      {/* 2. Section Services - Présentation de tes offres commerciales */}
       <ServicesSection />
 
       <hr className="border-slate-800" />
 
+      {/* 3. Section Méthodologie - L'AFFICHAGE DU COMPOSANT EST ICI MAINTENANT */}
+      <ProcessSection />
+
+      <hr className="border-slate-800" />
+
+      {/* 4. Section Contact & Formulaire - Capture de leads et conversion des clients */}
       <section id="contact" className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         <div className="space-y-6">
           <h2 className="text-3xl font-bold text-white">Discutons de votre business</h2>
@@ -42,11 +52,12 @@ export default function HomePage() {
             Vous cherchez un développeur rigoureux pour piloter la création de votre produit, optimiser un site existant ou automatiser vos processus d'entreprise ? 
           </p>
           <div className="space-y-4 font-mono text-sm text-slate-400">
-            <p>📍 Secteur d'activité : Lyon / Auvergne-Rhône-Alpes & Full Remote</p>
+            <p> Secteur d'activité : Lyon / Auvergne-Rhône-Alpes & Full Remote</p>
             <p>⏱️ Temps de réponse moyen : Moins de 24 heures</p>
           </div>
         </div>
         
+        {/* Ton composant de formulaire autonome géré avec React Hook Form */}
         <ContactForm />
       </section>
 
