@@ -3,7 +3,6 @@ import AppError from "../errors/AppError.js";
 
 export const authorize = (allowedRole) => {
   return (req, res, next) => {
-    // 1. On vérifie si l'utilisateur existe (injecté par le middleware authenticate)
     if (!req.user) {
       return next(new AppError("Utilisateur non authentifié", 401));
     }
