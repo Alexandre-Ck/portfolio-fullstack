@@ -2,10 +2,8 @@ import { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthContext } from './context/AuthContext';
 
-// Importation des composants structurels globaux
 import Navbar from './components/Navbar';
 
-// Importation des pages publiques (Visiteurs)
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
@@ -16,10 +14,7 @@ import AdminPage from './pages/admin/AdminPage';
 import CreateProjectPage from './pages/admin/CreateProjectPage';
 import EditProjectPage from './pages/admin/EditProjectPage';
 
-/**
- * Composant de protection de route (Guard)
- * Intercepte l'accès, examine l'état du Contexte d'authentification et redirige si nécessaire.
- */
+
 function PrivateRoute({ children }) {
   const { isAuthenticated } = useContext(AuthContext);
   
@@ -31,19 +26,15 @@ function PrivateRoute({ children }) {
 export default function App() {
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 font-sans flex flex-col">
-      {/* Barre de navigation statique supérieure */}
       <Navbar />
 
-      {/* Zone d'affichage dynamique des composants de page */}
       <main className="flex-grow">
         <Routes>
-          {/* CONFIGURATION DES ROUTES PUBLIQUES */}
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:id" element={<ProjectDetailPage />} />
           <Route path="/login" element={<LoginPage />} />
 
-          {/* CONFIGURATION DES ROUTES PRIVÉES ET SÉCURISÉES VIA PRIVATE_ROUTE */}
           <Route path="/admin" element={
             <PrivateRoute>
               <AdminPage />
@@ -60,12 +51,10 @@ export default function App() {
             </PrivateRoute>
           } />
 
-          {/* ROUTE DE SECOURS (FALLBACK) - Redirection automatique en cas d'URL inconnue */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
 
-      {/* Pied de page statique */}
       <footer className="border-t border-slate-800 bg-slate-950 text-center py-6 text-xs text-slate-500 font-mono">
         © {new Date().getFullYear()} Alexandre CHIKHAOUI - Tous droits réservés.
       </footer>

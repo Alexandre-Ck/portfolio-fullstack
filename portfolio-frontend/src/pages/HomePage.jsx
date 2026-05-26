@@ -4,10 +4,8 @@ import ServicesSection from '../components/ServicesSection'; // Importation de t
 
 export default function HomePage() {
   return (
-    // L'unique conteneur parent (Root Element) de toute la page
     <div className="max-w-6xl mx-auto px-4 py-12 space-y-20">
       
-      {/* 1. Section Hero - Proposition de valeur immédiate */}
       <section className="text-center max-w-3xl mx-auto py-8">
         <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
           Développeur Full-Stack & Solutions Web <span className="text-emerald-400">Sur-Mesure</span>
@@ -33,12 +31,10 @@ export default function HomePage() {
 
       <hr className="border-slate-800" />
 
-      {/* 2. Section Services - Présentation de tes prestations commerciales */}
       <ServicesSection />
 
       <hr className="border-slate-800" />
 
-      {/* 3. Section Contact & Formulaire - Capture de leads et clients */}
       <section id="contact" className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         <div className="space-y-6">
           <h2 className="text-3xl font-bold text-white">Discutons de votre business</h2>
@@ -51,10 +47,9 @@ export default function HomePage() {
           </div>
         </div>
         
-        {/* Intégration de ton formulaire géré par React Hook Form */}
         <ContactForm />
       </section>
 
-    </div> // Unique balise de fermeture principale
+    </div> 
   );
 }

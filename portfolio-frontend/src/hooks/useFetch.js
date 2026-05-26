@@ -1,9 +1,4 @@
-/**
- * Wrapper personnalisé autour de fetch pour communiquer avec le backend de manière standardisée.
- * @param {string} endpoint - La route API (ex: '/projects')
- * @param {Object} options - Options standard de fetch (method, body, etc.)
- * @returns {Promise<any>} - Les données JSON renvoyées par l'API
- */
+
 export async function apiFetch(endpoint, options = {}) {
   // Construction dynamique de l'URL absolue via les variables d'environnement de Vite
   const baseUrl = import.meta.env.VITE_API_URL;

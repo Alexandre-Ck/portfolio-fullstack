@@ -1,9 +1,5 @@
-/**
- * Composant ServicesSection
- * Affiche la grille des prestations de services commerciales avec tarifs indicatifs et appels à l'action.
- */
+
 export default function ServicesSection() {
-  // Liste des prestations de services (facilement modifiable ou extensible)
   const services = [
     {
       id: 1,
@@ -40,14 +36,12 @@ export default function ServicesSection() {
         </p>
       </div>
 
-      {/* Grille adaptative des cartes de services */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {services.map((service) => (
           <div 
             key={service.id} 
             className="bg-slate-800 border border-slate-700 rounded-xl p-6 flex flex-col justify-between shadow-lg transition-transform hover:-translate-y-1 duration-300"
           >
-            {/* Contenu principal */}
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-white border-b border-slate-700 pb-3">
                 {service.title}
@@ -56,7 +50,6 @@ export default function ServicesSection() {
                 {service.description}
               </p>
               
-              {/* Liste des points forts du service */}
               <ul className="space-y-2 pt-2">
                 {service.features.map((feature, idx) => (
                   <li key={idx} className="text-xs text-slate-400 flex items-center gap-2">
@@ -66,7 +59,6 @@ export default function ServicesSection() {
               </ul>
             </div>
 
-            {/* Zone tarifaire et action */}
             <div className="pt-6 mt-6 border-t border-slate-700 space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-xs text-slate-500 uppercase font-mono tracking-wider">Tarif indicatif</span>

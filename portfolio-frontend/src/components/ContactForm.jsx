@@ -26,7 +26,6 @@ export default function ContactForm() {
     <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 shadow-md">
       <h3 className="text-2xl font-bold text-white mb-6">M'envoyer un message</h3>
 
-      {/* Retours visuels de l'état de l'envoi API */}
       {apiFeedback.message && (
         <div className={`p-4 rounded-lg mb-6 text-sm font-medium ${apiFeedback.success ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}>
           {apiFeedback.message}
@@ -49,7 +48,6 @@ export default function ContactForm() {
           {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
         </div>
 
-        {/* Champ Email */}
         <div>
           <label className="block text-sm font-medium text-slate-300 mb-1">Votre Email</label>
           <input 
@@ -67,7 +65,6 @@ export default function ContactForm() {
           {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
         </div>
 
-        {/* Champ Message */}
         <div>
           <label className="block text-sm font-medium text-slate-300 mb-1">Votre Message</label>
           <textarea 
@@ -82,7 +79,6 @@ export default function ContactForm() {
           {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message.message}</p>}
         </div>
 
-        {/* Bouton de soumission */}
         <button
           type="submit"
           disabled={isSubmitting}

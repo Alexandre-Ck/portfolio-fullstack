@@ -46,7 +46,6 @@ export default function ProjectDetailPage() {
     );
   }
 
-  // Séparation de la stack technique pour le rendu des badges
   const tags = project.tech_stack ? project.tech_stack.split(',').map(t => t.trim()) : [];
 
   return (
@@ -63,11 +62,9 @@ export default function ProjectDetailPage() {
           </div>
         )}
 
-        {/* Corps de page */}
         <div className="p-8">
           <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-4">{project.title}</h1>
           
-          {/* Tags des technologies */}
           {tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-6">
               {tags.map((tag, index) => (
@@ -78,12 +75,10 @@ export default function ProjectDetailPage() {
             </div>
           )}
 
-          {/* Description complète (préserve les sauts de ligne avec whitespace) */}
           <div className="text-slate-300 leading-relaxed whitespace-pre-line mb-8">
             {project.description || "Aucune description détaillée disponible."}
           </div>
 
-          {/* Liens externes de conversion */}
           <div className="flex flex-wrap gap-4 pt-6 border-t border-slate-700">
             {project.github_url && (
               <a 

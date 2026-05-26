@@ -24,7 +24,6 @@ export default function ProjectsPage() {
     fetchProjects();// ca va lancer la requete  et afficher les porjet sur cette page
   }, []);
 
-  // ÉTAT 1 : Chargement asynchrone
   if (loading) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-20 text-center">
@@ -33,7 +32,6 @@ export default function ProjectsPage() {
     );
   }
 
-  // ÉTAT 2 : Récupération en échec (ex: Backend éteint)
   if (error) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-20 text-center">
@@ -45,7 +43,6 @@ export default function ProjectsPage() {
     );
   }
 
-  // ÉTAT 3 : Requête réussie
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       <div className="mb-10">
@@ -58,7 +55,7 @@ export default function ProjectsPage() {
           <p className="text-slate-400">Aucun projet n'a encore été publié.</p>
         </div>
       ) : (
-        // Grille adaptative CSS Grid (1 col sur mobile, 2 sur tablette, 3 sur desktop)
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />

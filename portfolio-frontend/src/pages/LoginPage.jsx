@@ -13,13 +13,11 @@ export default function LoginPage() {
   const onSubmit = async (data) => {
     try {
       setLoginError('') ;
-      // Soumission asynchrone des identifiants au point de terminaison d'authentification
       const response = await apiFetch('/auth/login', { 
         method: 'POST',
         body: JSON.stringify(data)
       });
 
-      // Si l'API valide la correspondance, elle renvoie le token
       if (response && response.token) {
         login(response.token); // Enregistrement dans le state et localStorage
         navigate('/admin'); // Routage immédiat vers l'espace sécurisé
@@ -39,7 +37,6 @@ export default function LoginPage() {
           <p className="text-slate-400 text-sm mt-2">Connectez-vous pour manager vos projets.</p>
         </div>
 
-        {/* Affichage des retours d'erreurs d'authentification serveur */}
         {loginError && (
           <div className="bg-red-500/10 text-red-400 border border-red-500/20 p-3.5 rounded-lg text-sm font-medium mb-6">
             {loginError}
@@ -47,7 +44,6 @@ export default function LoginPage() {
         )}
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-          {/* Email */}
           <div>
             <label className="block text-sm font-medium text-slate-300 mb-1">Adresse Email</label>
             <input 
@@ -66,7 +62,6 @@ export default function LoginPage() {
             {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
           </div>
 
-          {/* Mot de passe */}
           <div>
             <label className="block text-sm font-medium text-slate-300 mb-1">Mot de passe</label>
             <input 
@@ -79,7 +74,6 @@ export default function LoginPage() {
             {errors.password && <p className="text-red-400 text-xs mt-1">{errors.password.message}</p>}
           </div>
 
-          {/* Bouton de soumission */}
           <button
             type="submit"
             disabled={isSubmitting} 

@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 
 export default function ProjectCard({ project }) {
-  // Découpage de la chaîne de caractères (ex: "React, Node, MySQL") en tableau pour manipulation UI
   const tags = project.tech_stack ? project.tech_stack.split(',').map(tag => tag.trim()) : [];
 
   return (
     <div className="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden shadow-lg flex flex-col h-full transition-transform hover:-translate-y-1 duration-300">
       
-      {/* Image de couverture ou placeholder neutre si absente */}
       <div className="h-48 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
         {project.image_url ?  ( // 
           <img 
@@ -20,16 +18,13 @@ export default function ProjectCard({ project }) {
         )}
       </div>
 
-      {/* Contenu textuel de la carte */}
       <div className="p-5 grow flex flex-col">
         <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
         
-        {/* line-clamp-3 limite l'affichage à 3 lignes maximum pour garder l'harmonie de la grille */}
         <p className="text-slate-300 text-sm line-clamp-3 grow mb-4">
           {project.description || "Aucune description fournie pour ce projet."}
         </p>
 
-        {/* Badges des technologies utilisées */}
         {tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-4">
             {tags.map((tag, index) => (
@@ -40,7 +35,6 @@ export default function ProjectCard({ project }) {
           </div>
         )}
 
-        {/* Liens et boutons d'action */}
         <div className="pt-4 border-t border-slate-700 flex flex-wrap justify-between items-center gap-2">
           <Link 
             to={`/projects/${project.id}`} 
