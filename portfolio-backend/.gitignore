@@ -1,0 +1,14 @@
+
+
+# On bloque les dossiers de dépendances de TOUS les sous-projets
+**/node_modules/
+
+# On bloque les builds de production
+**/dist/
+
+# On bloque tes variables d'environnement secrètes (sécurité absolue)
+**/.env
+
+# Fichiers système inutiles
+.DS_Store
+Thumbs.db
