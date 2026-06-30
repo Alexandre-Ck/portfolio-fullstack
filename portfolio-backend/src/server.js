@@ -1,6 +1,12 @@
-import 'dotenv/config'; 
 import express from 'express';
 import cors from 'cors';
+
+// ✅ Charge dotenv UNIQUEMENT en développement local (évite le conflit sur Vercel)
+if (process.env.NODE_ENV !== 'production') {
+  const dotenv = await import('dotenv');
+  dotenv.config();
+}
+
 import authRoutes from './routes/auth.routes.js'; 
 import projectRoutes from './routes/project.routes.js';
 import errorHandler from './middlewares/errorHandler.js'; // Middleware de gestion d'erreurs
@@ -8,7 +14,7 @@ import contactRoutes from './routes/contact.routes.js';
 
 const app = express();  
 
-// ✅ Modification CORS : Autorise toutes les origines (*) ou ton futur lien Vercel Front
+// ✅ Configuration CORS : Autorise toutes les origines pour le moment
 app.use(cors({ 
   origin: "*", 
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -17,12 +23,12 @@ app.use(cors({
 
 app.use(express.json());
 
-// Tes routes de l'API
+// ✅ Les routes de l'API
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/contact', contactRoutes);
 
-// Gestionnaire d'erreurs — toujours EN DERNIER
+// ✅ Gestionnaire d'erreurs — toujours EN DERNIER
 app.use(errorHandler);
 
 // ❌ Désactivé pour Vercel : On ne lance pas de serveur d'écoute traditionnel en production
