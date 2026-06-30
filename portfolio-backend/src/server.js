@@ -13,6 +13,7 @@ import errorHandler from './middlewares/errorHandler.js'; // Middleware de gesti
 import contactRoutes from './routes/contact.routes.js'; 
 
 const app = express();  
+console.log("=== LE CODE EN DUR TOURNE ENFIN ===");
 
 // ✅ Configuration CORS : Autorise toutes les origines pour le moment
 app.use(cors({ 

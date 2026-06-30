@@ -1,27 +1,19 @@
 import mysql from 'mysql2/promise';
 
-let pool;
-
-function getPool() {
-  if (!pool) {
-    pool = mysql.createPool({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      port: parseInt(process.env.DB_PORT, 10) || 3306,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      ssl: {
-        rejectUnauthorized: false
-      }
-    });
+const pool = mysql.createPool({
+  host: "mysql-xxxxxx.aivencloud.com", // Remplace par ton vrai host
+  user: "avnadmin",                   // Remplace par ton vrai user
+  port: 28338,                        // Ton vrai port
+  password: "ton_mot_de_passe",       // Ton vrai mot de passe
+  database: "defaultdb",
+  ssl: {
+    rejectUnauthorized: false
   }
-  return pool;
-}
+});
 
 const db = {
   query: async (sql, params) => {
-    const currentPool = getPool();
-    return currentPool.query(sql, params);
+    return pool.query(sql, params);
   }
 };
 
